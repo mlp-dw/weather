@@ -3,7 +3,7 @@ import React from "react";
 function Days(props) {
 
   const date = new Date(props.date * 1000); //en millisecond pour js
-  const today = (new Intl.DateTimeFormat('fr-FR', { weekday: 'long'}).format(date));
+  const today = (new Intl.DateTimeFormat('es-ES', { weekday: 'long'}).format(date));
   
   function handleClick(e) {
 
@@ -20,7 +20,7 @@ function Days(props) {
 
     if (props.nextDays.length > 0) {
       return props.nextDays.map((element)=>{
-        let dayOfWeek = (new Intl.DateTimeFormat('fr-FR', { weekday: 'long'}).format(new Date(element * 1000)));    
+        let dayOfWeek = (new Intl.DateTimeFormat('es-ES', { weekday: 'long'}).format(new Date(element * 1000)));    
         return (<a onClick={handleClick} data-time={element} href="">{dayOfWeek}</a>)
       })
     }

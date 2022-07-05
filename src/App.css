@@ -29,8 +29,20 @@ body {
         .little{
             font-size: 10px;
         }
+        .form-town{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+            width: 30%;
+        }
 
-
+        .input{
+            color: #ffffff;
+            text-align: center;
+        }
         /* Weather */
         .weather.card {
             margin-top:4vh;

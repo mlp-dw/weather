@@ -3,6 +3,7 @@ import './App.css';
 import Header from "./components/Header";
 import Weather from './components/Weather';
 import Icons from "./components/Icons";
+import Input from "./components/Input";
 
 function App() {
 
@@ -11,14 +12,18 @@ function App() {
     fetchWeather()
   }, [])
 
+  // to display today wheather
   const [name, setName] = useState("");
   const [temperature, setTemperature] = useState("");
   const [wind, setWind] = useState("");
   const [windDeg, setWindDeg] = useState("");
   const [icon, setIcon] = useState("");
+  // to display next days
   const [date, setDate] = useState("");
   const [days, setDays] = useState("");
-  const [alldata, setAllData] = useState("")
+  const [alldata, setAllData] = useState("");
+  // get localisation
+  const [input, setInput] = useState("");
 
   const setData = (data) => {                
     setName(data.city.name)
@@ -47,6 +52,7 @@ function App() {
     });  
   };  
   function fetchWeather() {
+    
     let lat = '57.053055';
     let lon = '-135.330002';
     let apiKey = '99cc9e47d1d13031efb082882d61dfff';
@@ -58,15 +64,37 @@ function App() {
             return response.json();
           })
         .then((data) => {
-            setData(data);
+          setData(data);
         })
         .catch(console.err);
-    
   }
+
+  const search = e => {
+    setInput(e.target.value);
+  }
+
+  const handleSubmit = () =>{
+    
+    if (input !== ''){
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=99cc9e47d1d13031efb082882d61dfff&units=metric`)
+          .then(response => response.json())
+          .then(data => {
+            setData(data);
+            localStorage.setItem(data.city.name, JSON.stringify(data.city.name)); 
+          }); 
+          setInput(''); 
+    }else{
+      fetchWeather()
+    }
+  };  
 
   return (
     <div className="App">
       <Header />
+      <Input 
+        search={search}
+        submit={handleSubmit}
+      />
       <Weather 
         name={name}
         temperature={temperature}
