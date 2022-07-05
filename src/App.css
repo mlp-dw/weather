@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
-}
+body {
+            background: #202629;
+        }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+        .App {
+            text-align: center;
+        }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+        .App-logo {
+            height: 100px;
+            pointer-events: none;
+        }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+        .App-header {
+            background-color: #282c34;
+            min-height: 10vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(10px + 2vmin);
+            color: white;
+        }
 
-.App-link {
-  color: #61dafb;
-}
+        .App-link {
+            color: #61dafb;
+        }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+        .little{
+            font-size: 10px;
+        }
+
+
+        /* Weather */
+        .weather.card {
+            margin-top:4vh;
+        }
+
+        .weather.card .card-content {
+            background: #0b0829;
+        }
+
+        .weather.card .card-action {
+            background: #120944;
+        }
+
+        .weather .temperature {
+            margin-left:4vh;
+            font-size:120px;
+            font-family: 'Roboto', sans-serif;
+            text-shadow: -1px 0 #61dafb, 0 1px #61dafb, 1px 0 #61dafb, 0 -1px #61dafb;
+        }
