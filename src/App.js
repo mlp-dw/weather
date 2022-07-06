@@ -5,6 +5,8 @@ import Weather from './components/Weather';
 import Icons from "./components/Icons";
 import Input from "./components/Input";
 
+export const DateContext = React.createContext()
+
 function App() {
 
   useEffect(() => {
@@ -89,23 +91,22 @@ function App() {
   };  
 
   return (
-    <div className="App">
-      <Header />
-      <Input 
-        search={search}
-        submit={handleSubmit}
-      />
-      <Weather 
-        name={name}
-        temperature={temperature}
-        wind={wind}
-        windDeg={windDeg}
-        icon={icon}
-        date={date}
-        nextDays={days}
-        goNextDay={goNextDay}
-      />
-    </div>
+    <DateContext.Provider value={{date, days, goNextDay}} >
+      <div className="App">
+        <Header />
+        <Input 
+          search={search}
+          submit={handleSubmit}
+        />
+        <Weather 
+          name={name}
+          temperature={temperature}
+          wind={wind}
+          windDeg={windDeg}
+          icon={icon}
+        />
+      </div>
+    </DateContext.Provider>
   );
 }
 

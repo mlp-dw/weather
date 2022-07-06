@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DateContext } from "../App";
 
-function Days(props) {
+function Days() {
+  const goDayDate = useContext(DateContext);
 
-  const date = new Date(props.date * 1000); //en millisecond pour js
+  const date = new Date(goDayDate.date * 1000); //en millisecond pour js
   const today = (new Intl.DateTimeFormat('es-ES', { weekday: 'long'}).format(date));
   
   function handleClick(e) {
@@ -13,13 +15,13 @@ function Days(props) {
     });
     e.target.style.fontWeight = "bold"
     e.preventDefault();
-    props.goNextDay(e.target.getAttribute('data-time'))
+    goDayDate.goNextDay(e.target.getAttribute('data-time'))
   }
 
   function displayDays(){
 
-    if (props.nextDays.length > 0) {
-      return props.nextDays.map((element)=>{
+    if (goDayDate.days.length > 0) {
+      return goDayDate.days.map((element)=>{
         let dayOfWeek = (new Intl.DateTimeFormat('es-ES', { weekday: 'long'}).format(new Date(element * 1000)));    
         return (<a onClick={handleClick} data-time={element} href="">{dayOfWeek}</a>)
       })
@@ -28,7 +30,7 @@ function Days(props) {
 
   return (
       <div className="card-action">
-         <a onClick={handleClick} data-time={props.date} href="">{today}<span className="little"> (hoy)</span></a>
+         <a onClick={handleClick} data-time={goDayDate.date} href="">{today}<span className="little"> (hoy)</span></a>
          {displayDays()}
       </div>
   );
