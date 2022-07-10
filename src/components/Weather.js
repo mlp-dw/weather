@@ -2,7 +2,7 @@ import React from "react";
 import Days from "./Days";
 
 function Weather(props) {
-  
+
     return (
         <div className="row">
           <div className="col s12 m6 push-m3">

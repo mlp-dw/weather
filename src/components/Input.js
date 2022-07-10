@@ -17,7 +17,7 @@ function Input(props){
                 Buscar
             </button>
         </div>
-        
+
     );
 }
 
