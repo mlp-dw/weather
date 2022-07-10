@@ -23,7 +23,7 @@ function Days() {
     if (goDayDate.days.length > 0) {
       return goDayDate.days.map((element)=>{
         let dayOfWeek = (new Intl.DateTimeFormat('es-ES', { weekday: 'long'}).format(new Date(element * 1000)));    
-        return (<a onClick={handleClick} data-time={element} href="">{dayOfWeek}</a>)
+        return (<a onClick={handleClick} key={element} data-time={element} href="">{dayOfWeek}</a>)
       })
     }
   }  

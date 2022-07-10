@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Weather from './components/Weather';
 import Icons from "./components/Icons";
 import Input from "./components/Input";
+import PropTypes from 'prop-types';
 
 export const DateContext = React.createContext()
 
@@ -21,8 +22,8 @@ function App() {
   const [windDeg, setWindDeg] = useState("");
   const [icon, setIcon] = useState("");
   // to display next days
-  const [date, setDate] = useState("");
-  const [days, setDays] = useState("");
+  const [date, setDate] = useState(0);
+  const [days, setDays] = useState([]);
   const [alldata, setAllData] = useState("");
   // get localisation
   const [input, setInput] = useState("");
@@ -110,4 +111,11 @@ function App() {
   );
 }
 
+DateContext.Provider.propTypes = {
+  value : PropTypes.exact({
+    date: PropTypes.number,
+    days: PropTypes.arrayOf(PropTypes.number),
+    goNextDay: PropTypes.func
+  })
+}
 export default App;
